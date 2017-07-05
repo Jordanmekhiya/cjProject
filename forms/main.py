@@ -27,7 +27,7 @@ class PassHandler(webapp2.RequestHandler):
         username = self.request.get("username")
         password = self.request.get("password")
         self.response.write(username + " " + password)
-        check
+        if
 
 class FormHandler(webapp2.RequestHandler):
     def get(self):
