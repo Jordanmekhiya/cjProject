@@ -26,7 +26,7 @@ class FormHandler(webapp2.RequestHandler):
         eyecolor = self.request.get('eyecolor')
         race = self.request.get('race')
         sex = self.request.get('sex')
-        self.response.write(name + eyecolor + race + sex)
+        self.response.write(name + eyecolor + " " + race + " " + sex)
 
 
 
