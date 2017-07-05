@@ -15,10 +15,18 @@
 # limitations under the License.
 #
 import webapp2
+import jinja2
+
+jinja_environment = jinja2.Environment(
+  loader=jinja2.FileSystemLoader("templates"))
 
 class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        self.response.write('Hello world!')
+     def get(self):
+        #this is where you reference your HTML file
+        template = jinja_environment.get_template('hello.html')
+        self.response.out.write(template.render({
+            'template_name': self.request.get('name')
+        }))
 
 class PassHandler(webapp2.RequestHandler):
     def post(self):
@@ -38,6 +46,11 @@ class FormHandler(webapp2.RequestHandler):
         Password = self.request.get('Password')
         self.response.write(name + eyecolor + " " + race + " " + sex + " " + password)
 
+
+
+#set up environment for Jinja
+#this sets jinja's relative directory to match the directory name(dirname) of
+#the current __file__, in this case, main.py
 
 
 app = webapp2.WSGIApplication([
