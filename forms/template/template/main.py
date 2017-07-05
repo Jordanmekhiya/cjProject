@@ -20,28 +20,6 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('Hello world!')
 
-class PassHandler(webapp2.RequestHandler):
-    def post(self):
-        real_name = "Crystal"
-        real_pass = "apples"
-        username = self.request.get("username")
-        password = self.request.get("password")
-        self.response.write(username + " " + password)
-        # if
-
-class FormHandler(webapp2.RequestHandler):
-    def get(self):
-        name = self.request.get('name')
-        eyecolor = self.request.get('eyecolor')
-        race = self.request.get('race')
-        sex = self.request.get('sex')
-        Password = self.request.get('Password')
-        self.response.write(name + eyecolor + " " + race + " " + sex + " " + password)
-
-
-
 app = webapp2.WSGIApplication([
-    ('/', MainHandler),
-    ('/submission', FormHandler),
-    ('/login', PassHandler)
+    ('/', MainHandler)
 ], debug=True)
